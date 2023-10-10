@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_mes_qc_form" model="ir.actions.act_window">
+        <field name="name">QC SOP</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mes.qc_form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first QC SOP!
+            </p>
+        </field>
+    </record>
+    <record id="action_mes_qc_form_questions" model="ir.actions.act_window">
+        <field name="name">MES QC Form Question</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mes.qc_form_questions</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first QC Form question!
+            </p>
+        </field>
+    </record>
+    <record id="action_mes_qc_form_answers" model="ir.actions.act_window">
+        <field name="name">QC SOP Result</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mes.qc_answers</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first QC SOP Result!
+            </p>
+        </field>
+    </record>
+    <record id="qc_type_action" model="ir.actions.act_window">
+        <field name="name">QC Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mes.qc_type</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first QC Type!
+            </p>
+        </field>
+    </record>
+    <record id="qc_item_action" model="ir.actions.act_window">
+        <field name="name">QC Item</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mes.qc_item</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first QC Item!
+            </p>
+        </field>
+    </record>
+    <record id="qc_standard_action" model="ir.actions.act_window">
+        <field name="name">QC Standard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mes.qc_standard</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first QC Standard!
+            </p>
+        </field>
+    </record>
+    <record id="qc_tool_action" model="ir.actions.act_window">
+        <field name="name">QC Tool</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mes.qc_tool</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first QC Tool!
+            </p>
+        </field>
+    </record>
+    <record id="qc_frequency_action" model="ir.actions.act_window">
+        <field name="name">QC Frequency</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mes.qc_frequency</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first QC Frequency!
+            </p>
+        </field>
+    </record>
+    <record id="qc_sop_type_action" model="ir.actions.act_window">
+        <field name="name">QC SOP Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">autonsi.quality.qcsoptype</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first QC SOP Type!
+            </p>
+        </field>
+    </record>
+    <record id="view_mes_qc_type_tree" model="ir.ui.view">
+        <field name="name">mes.qc_type.tree</field>
+        <field name="model">mes.qc_type</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="name"/>
+                <field name="apply"/>
+                <field name="user_created_id"/>
+                <field name="create_date"/>
+                <field name="user_updated_id"/>
+                <field name="write_date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_mes_qc_type_form" model="ir.ui.view">
+        <field name="name">mes.qc_type.form</field>
+        <field name="model">mes.qc_type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="apply" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mes_qc_item_tree" model="ir.ui.view">
+        <field name="name">mes.qc_item.tree</field>
+        <field name="model">mes.qc_item</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="display_name" string="Name"/>
+                <field name="apply"/>
+                <field name="user_created_id"/>
+                <field name="create_date"/>
+                <field name="user_updated_id"/>
+                <field name="write_date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_mes_qc_item_form" model="ir.ui.view">
+        <field name="name">mes.qc_item.form</field>
+        <field name="model">mes.qc_item</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="qc_type_id" required="1"/>
+                        <field name="name" required="1"/>
+                        <field name="apply" required="1" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mes_qc_standard_tree" model="ir.ui.view">
+        <field name="name">mes.qc_standard.tree</field>
+        <field name="model">mes.qc_standard</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="display_name" string="Name"/>
+                <field name="apply"/>
+                <field name="user_created_id"/>
+                <field name="create_date"/>
+                <field name="user_updated_id"/>
+                <field name="write_date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_mes_qc_standard_form" model="ir.ui.view">
+        <field name="name">mes.qc_standard.form</field>
+        <field name="model">mes.qc_standard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="qc_type_id" required="1"/>
+                        <field name="qc_item_id" required="1"/>
+                        <field name="name" required="1"/>
+                        <field name="apply" required="1" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mes_qc_tool_tree" model="ir.ui.view">
+        <field name="name">mes.qc_tool.tree</field>
+        <field name="model">mes.qc_tool</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="name"/>
+                <field name="apply"/>
+                <field name="user_created_id"/>
+                <field name="create_date"/>
+                <field name="user_updated_id"/>
+                <field name="write_date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_mes_qc_tool_form" model="ir.ui.view">
+        <field name="name">mes.qc_tool.form</field>
+        <field name="model">mes.qc_tool</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="apply" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mes_qc_frequency_tree" model="ir.ui.view">
+        <field name="name">mes.qc_frequency.tree</field>
+        <field name="model">mes.qc_frequency</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="name"/>
+                <field name="apply"/>
+                <field name="user_created_id"/>
+                <field name="create_date"/>
+                <field name="user_updated_id"/>
+                <field name="write_date"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_mes_qc_frequency_form" model="ir.ui.view">
+        <field name="name">mes.qc_frequency.form</field>
+        <field name="model">mes.qc_frequency</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" required="1"/>
+                        <field name="apply" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_mes_qc_answers_form" model="ir.ui.view">
+        <field name="name">mes.qc_answers.form</field>
+        <field name="model">mes.qc_answers</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="qc_id"/>
+                <notebook>
+                    <page string="Questions" name="questions">
+                        <field name="answer_record_ids">
+                            <tree sample="1">
+                                <field name="question_key"/>
+                                <field name="value"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mes_qc_form_answers_record_form" model="ir.ui.view">
+        <field name="name">mes.qc_form_answers_record.form</field>
+        <field name="model">mes.qc_form_answers_record</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="question_key" string="Question"/>
+                <field name="value" string="Value"/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mes_qc_form_tree" model="ir.ui.view">
+        <field name="name">mes.qc_form.tree</field>
+        <field name="model">mes.qc_form</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="name"/>
+                <field name="product_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mes_qc_form_form" model="ir.ui.view">
+        <field name="name">mes.qc_form.form</field>
+        <field name="model">mes.qc_form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="preview_qc_form" type="object" string="Preview QC SOP"
+                            class="oe_highlight"/>
+                </header>
+
+                <sheet>
+                    <group>
+
+                        <field name="name" string="QC SOP Title"/>
+                        <field name="qc_sop_category" string="QC Category"/>
+                        <field name="product_id" string="QC Product"/>
+                        <field name="qc_sop_type" domain="[('qc_sop_category','=',qc_sop_category)]"/>
+                        <field name="qc_sop_type_text" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page string="QC List" name="qc_list">
+                            <div>
+                                <group attrs="{'invisible': [('qc_sop_type_text', '!=', 'Raw Material')]}">
+                                    <field name="mes_qc_type_ids"/>
+                                    <field name="mes_qc_item_ids"/>
+                                    <field name="n_values"/>
+                                    <field name="units"/>
+                                </group>
+                                <group attrs="{'invisible': [('qc_sop_type_text', '!=', 'Material')]}">
+                                    <field name="mes_qc_type_ids"/>
+                                    <field name="mes_qc_item_ids"/>
+                                    <field name="mes_qc_standard_ids"/>
+                                    <field name="mes_qc_tool_ids"/>
+                                    <field name="mes_qc_frequency_ids"/>
+                                </group>
+                                <group attrs="{'invisible': [('qc_sop_type_text', '!=', 'After Setting')]}">
+                                    <field name="mes_qc_type_ids"/>
+                                    <field name="mes_qc_item_ids"/>
+                                    <field name="mes_qc_standard_ids"/>
+                                    <field name="mes_qc_tool_ids"/>
+                                    <field name="mes_qc_frequency_ids"/>
+                                </group>
+                                <group attrs="{'invisible': [('qc_sop_type_text', '!=', 'SEMI LOT')]}">
+                                    <field name="mes_qc_type_ids"/>
+                                    <field name="mes_qc_item_ids"/>
+                                    <field name="mes_qc_standard_ids"/>
+                                    <field name="mes_qc_tool_ids"/>
+                                    <field name="mes_qc_frequency_ids"/>
+                                </group>
+                                <group attrs="{'invisible': [('qc_sop_type_text', '!=', 'After QC')]}">
+                                    <field name="mes_qc_type_ids"/>
+                                    <field name="mes_qc_item_ids"/>
+                                    <field name="mes_qc_standard_ids"/>
+                                    <field name="mes_qc_tool_ids"/>
+                                    <field name="mes_qc_frequency_ids"/>
+                                </group>
+                                <group attrs="{'invisible': [('qc_sop_type_text', '!=', 'Matrix')]}">
+                                    <field name="answers_ids" string="Answers">
+                                        <tree editable="bottom">
+                                            <field name="value" string="Choices"/>
+                                        </tree>
+                                    </field>
+                                    <field name="matrix_row_ids">
+                                        <tree editable="bottom">
+                                            <field name="value" string="Rows"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </div>
+                        </page>
+                    </notebook>
+                    <!--                    <form id="quality_check_form" string="Quality Checks">-->
+                    <!--                        <div class="col-md-12">-->
+                    <!--                            <field name="question_ids" widget="qccheck" context="{'form_id':id}"/>-->
+                    <!--                        </div>-->
+                    <!--                    </form>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_mes_qc_form_questions_tree" model="ir.ui.view">
+        <field name="name">mes.qc_form_questions.tree</field>
+        <field name="model">mes.qc_form_questions</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="title"/>
+                <field name="question_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mes_qc_answers_tree" model="ir.ui.view">
+        <field name="name">mes.qc_answers.tree</field>
+        <field name="model">mes.qc_answers</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="id" type="char"/>
+                <field name="qc_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_mes_qc_question_form" model="ir.ui.view">
+        <field name="name">mes.qc_form_questions.form</field>
+        <field name="model">mes.qc_form_questions</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="title"/>
+                        <field name="question_type"/>
+                    </group>
+                    <notebook>
+                        <page string="Answers" name="answers">
+                            <group attrs="{'invisible': [('question_type', 'not in', ['simple_choice', 'multiple_choice', 'matrix'])]}">
+                                <field name="answers_ids" string="Answers">
+                                    <tree editable="bottom">
+                                        <field name="value" string="Choices"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group attrs="{'invisible': [('question_type', '!=', 'matrix')]}">
+                                <field name="matrix_row_ids"
+                                       attrs="{'invisible': [('question_type', '!=', 'matrix')]}">
+                                    <tree editable="bottom">
+                                        <field name="value" string="Rows"/>
+                                    </tree>
+                                </field>
+                            </group>
+                            <group attrs="{'invisible': [('question_type', '!=', 'raw_material')]}">
+                                <field name="mes_qc_type_ids"/>
+                                <field name="mes_qc_item_ids"/>
+                                <field name="n_values"/>
+                                <field name="units"/>
+                            </group>
+                            <group attrs="{'invisible': [('question_type', '!=', 'material')]}">
+                                <field name="mes_qc_type_ids"/>
+                                <field name="mes_qc_item_ids"/>
+                                <field name="mes_qc_standard_ids"/>
+                                <field name="mes_qc_tool_ids"/>
+                                <field name="mes_qc_frequency_ids"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_master_manufacturing_order_inherit" model="ir.ui.view">
+        <field name="name">mrp.masterproduction.form.inherit</field>
+        <field name="model">mrp.masterproduction</field>
+        <field name="inherit_id" ref="autonsi_mmo.view_master_manufacturing_order"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[@name='manufacturing_order_notebook']//page[@name='manufacturing_order']//field[@name='mo_line_ids']//tree[@name='mo_line_ids_tree']//field[@name='workorder_ids']"
+                   position="after">
+                <field name="sh_mrp_quality_check_ids" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_mes_qc_sop_type_tree" model="ir.ui.view">
+        <field name="name">autonsi.quality.qcsoptype.tree</field>
+        <field name="model">autonsi.quality.qcsoptype</field>
+        <field name="arch" type="xml">
+            <tree sample="1">
+                <field name="qc_sop_category"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_autonsi_quality_qcsoptype_form" model="ir.ui.view">
+        <field name="name">autonsi.quality.qcsoptype.form</field>
+        <field name="model">autonsi.quality.qcsoptype</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="2">
+                        <group>
+                            <field name="qc_sop_category" required="1"/>
+                            <field name="description_text"/>
+                        </group>
+                        <group>
+                            <field name="name" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

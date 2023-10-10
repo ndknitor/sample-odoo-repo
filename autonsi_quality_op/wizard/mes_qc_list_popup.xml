@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sh_mr_quality_list_wizard_form_view" model="ir.ui.view">
+        <field name="name">sh.mrp.quality.check.wizard.form.view</field>
+        <field name="model">mes.qualitychecklist</field>
+        <field name="arch" type="xml">
+
+            <form id="quality_check_form" string="Quality Checks">
+                <!--                <field name="qc_check_information"/>-->
+                <div class="col-md-12">
+                    <field name="chosen_state" invisible="1"/>
+                    <field name="qc_form_id" widget="qclist"/>
+<!--                     widget="qclist"-->
+
+                </div>
+                <footer>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

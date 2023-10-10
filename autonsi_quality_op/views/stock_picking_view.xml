@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record model="ir.ui.view" id="view_picking_form_inherit_quality_op">
+        <field name="name">view.picking.form.inherit.quality.op</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <button name="action_confirm" position="after">
+                <button name="preview_qc_form" type="object" string="Quality Checks" class="oe_highlight"
+                        attrs="{'invisible':[('include_qc', '=', False)]}" data-hotkey="q" />
+            </button>
+           <xpath expr="//page[2]" position="after">
+               <page string="Quality Check" attrs="{'invisible': [('include_qc', '=', False)]}">
+                   <field name="quality_check_ids">
+                       <tree editable="bottom">
+                           <field name="product_picking_id"/>
+                           <field name="product_picking_qty"/>
+                           <field name="qc_sop_picking_type"  domain="[('qc_sop_category','=','iqc')]"/>
+                           <field name="mes_qc_form_id"  domain="[('qc_sop_type','=',qc_sop_picking_type)]" string="QC SOP"/>
+                       </tree>
+                   </field>
+               </page>
+            </xpath>
+
+            <field name="origin" position="after">
+                <field name="include_qc" invisible="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_picking_form_inherit_quality_op1">
+        <field name="name">view.picking.form.inherit.quality.op1</field>
+        <field name="model">stock.picking.type</field>
+        <field name="inherit_id" ref="stock.view_picking_type_form"/>
+        <field name="arch" type="xml">
+
+           <field name="code" position="after">
+                <field name="include_qc" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

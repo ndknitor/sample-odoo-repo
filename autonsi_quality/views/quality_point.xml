@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="quality_point_form_view" model="ir.ui.view">
+        <field name="name">quality.point.form.view</field>
+        <field name="model">sh.qc.point</field>
+        <field name="arch" type="xml">
+            <form string="Quality Point">
+                <sheet>
+                    <div class="oe_title">
+                        <H1><field name="name" readonly="1"/></H1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="product_id" required="1"/>
+                            <field name="operation" required="1"/>
+                            <field name="company_id" groups="base.group_multi_company" invisible="1"/>
+                            <field name="team" invisible="1"/>
+                            <field name="is_mandatory" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="type" invisible="1"/>
+                            <field name="qc_sop_categories" />
+<!--                            <field name="qc_sop_type_iqc" attrs="{'invisible':[('qc_sop_categories','!=','iqc')]}"/>-->
+<!--                            <field name="qc_sop_type_pqc" attrs="{'invisible':[('qc_sop_categories','!=','pqc')]}"/>-->
+<!--                            <field name="qc_sop_type_oqc" attrs="{'invisible':[('qc_sop_categories','!=','oqc')]}"/>-->
+                            <field name="qc_sop_type" domain="[('qc_sop_category','=',qc_sop_categories)]"/>
+                            <field name="type_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Instruction">
+                            <field name="sh_instruction"/>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="quality_point_search_view" model="ir.ui.view">
+        <field name="name">quality.point.search.view</field>
+        <field name="model">sh.qc.point</field>
+        <field name="arch" type="xml">
+            <search string="Quality Point">
+                <field name="product_id"/>
+                <group expand="0" string="Group By">
+                    <filter string="Product" name="product" context="{'group_by':'product_id'}"/>
+                    <filter string="Picking Type" name="picking_type" context="{'group_by':'operation'}"/>
+                    <filter string="Company" name="company" context="{'group_by':'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="quality_point_tree_view" model="ir.ui.view">
+        <field name="name">quality.point.tree.view</field>
+        <field name="model">sh.qc.point</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="qc_sop_categories"/>
+                <field name="qc_sop_type"/>
+            </tree>
+        </field>
+    </record>
+    <record id="quality_point_action" model="ir.actions.act_window">
+        <field name="name">Quality Point</field>
+        <field name="res_model">sh.qc.point</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="quality_point_tree_view"/>
+    </record>
+    <record id="seq_quality_point" model="ir.sequence">
+        <field name="name">Quality Point</field>
+        <field name="code">sh.qc.point</field>
+        <field name="prefix">QCP</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

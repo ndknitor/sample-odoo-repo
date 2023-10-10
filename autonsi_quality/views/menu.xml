@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="quality_control_main_menu" name="Quality Control" groups="autonsi_quality.sh_quality_control_user"
+              web_icon="sh_mrp_qc,static/description/icon.png"/>
+
+    <menuitem id="menu_qc_dashboard" name="Dashboard" action="qc_dashboard_action"
+              parent="autonsi_quality.quality_control_main_menu" sequence="0"/>
+
+    <!--    <menuitem id="main_menu_quality_picking" name="All Operations" parent="autonsi_quality.quality_control_main_menu" sequence="1" />-->
+
+    <!--    <menuitem id="child_menu_quality_picking_mrp" name="Manufacturing"-->
+    <!--              parent="autonsi_quality.main_menu_quality_picking" sequence="1"/>-->
+
+    <!--    <menuitem id="mrp_menu_pending_qc" name="Pending QC" parent="autonsi_quality.child_menu_quality_picking_mrp" action="mrp_pending_qc_action" sequence="1" />-->
+    <!--    <menuitem id="mrp_menu_failed_qc" parent="autonsi_quality.child_menu_quality_picking_mrp" action="mrp_failed_qc_action" sequence="2" />-->
+    <!--    <menuitem id="mrp_menu_full_passed_qc" parent="autonsi_quality.child_menu_quality_picking_mrp" action="mrp_fully_passed_qc_action" sequence="4" />-->
+
+    <menuitem id="main_menu_standard_qc" name="Standard QC" parent="quality_control_main_menu"
+              sequence="2"/>
+
+    <menuitem id="quality_main_menu" name="Quality Check" parent="quality_control_main_menu" sequence="1"/>
+
+    <!--     <menuitem id="menu_quality_check" name="Quality Check" action="quality_check_action" parent="sh_mrp_qc.quality_main_menu" sequence="2" /> -->
+    <!--    <menuitem id="menu_mrp_quality_check" name="Quality Check" action="mrp_quality_check_action" parent="autonsi_quality.quality_main_menu" sequence="4" />-->
+
+
+    <menuitem id="quality_control_report_main_menu" name="Reporting" parent="autonsi_quality.quality_control_main_menu"
+              sequence="4"/>
+
+
+    <menuitem id="quality_control_report_sub_menu_mrp" name="Manufacturing"
+              parent="autonsi_quality.quality_control_report_main_menu" sequence="2"/>
+
+    <menuitem id="menu_mrp_quality_check_pivot" name="Quality Check" action="mrp_quality_check_report_action"
+              parent="autonsi_quality.quality_control_report_sub_menu_mrp" sequence="1"/>
+
+    <menuitem
+            id="menu_mrp_quality_check_action"
+            name="Quality Check Report"
+            groups="autonsi_quality.sh_quality_control_manager"
+            action="mrp_quality_check_report_wizard_action"
+            parent="autonsi_quality.quality_control_report_sub_menu_mrp"
+            sequence="3"
+    />
+
+
+    <menuitem id="quality_control_config" name="Configuration" parent="quality_control_main_menu" sequence="5"
+              groups="autonsi_quality.sh_quality_control_manager"/>
+    <menuitem id="menu_quality_team" action="quality_team_action" parent="quality_control_config" sequence="1"/>
+
+    <menuitem id="menu_qc_sop_type" action="qc_sop_type_action" parent="main_menu_standard_qc" sequence="2"/>
+    <menuitem id="menu_qc_type" action="qc_type_action" parent="main_menu_standard_qc" sequence="3"/>
+    <menuitem id="menu_qc_item" action="qc_item_action" parent="main_menu_standard_qc" sequence="4"/>
+    <menuitem id="menu_qc_standard" action="qc_standard_action" parent="main_menu_standard_qc"
+              sequence="5"/>
+    <menuitem id="menu_qc_tool" action="qc_tool_action" parent="main_menu_standard_qc" sequence="6"/>
+    <menuitem id="menu_qc_frequency" action="qc_frequency_action" parent="main_menu_standard_qc"
+              sequence="7"/>
+
+
+    <!--    <menuitem id="menu_mes_qc_form" name="QC Forms"  parent="autonsi_quality.quality_control_main_menu" groups="autonsi_quality.sh_quality_control_manager" sequence="3" />-->
+    <menuitem id="menu_quality_point" name="QCP" action="quality_point_action"
+              parent="autonsi_quality.quality_main_menu" sequence="2"/>
+    <menuitem id="menu_mes_qc_form_forms" name="QC SOP" action="action_mes_qc_form"
+              parent="autonsi_quality.quality_main_menu" groups="autonsi_quality.sh_quality_control_manager"
+              sequence="5"/>
+    <menuitem id="menu_mes_qc_form_answers" name="QC SOP result" action="action_mes_qc_form_answers"
+              parent="autonsi_quality.quality_main_menu" groups="autonsi_quality.sh_quality_control_manager"
+              sequence="5"/>
+</odoo>

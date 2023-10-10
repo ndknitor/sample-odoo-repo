@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record model="ir.ui.view" id="view_picking_form_inherit_quality_op">
+        <field name="name">view.picking.form.inherit.quality.op</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//page[2]" position="after">
+             <page string="Quality Check">
+                 <field name="include_qc" />
+            </page>
+         </xpath>
+        </field>
+    </record>
+
+</odoo>

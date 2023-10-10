@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="sh_mr_quality_check_wizard_form_view" model="ir.ui.view">
+        <field name="name">sh.mrp.quality.check.wizard.form.view</field>
+        <field name="model">mes.qualitycheckpopup</field>
+        <field name="arch" type="xml">
+            <form id="quality_check_form" string="Quality Checks">
+                <!--                <field name="qc_check_information"/>-->
+                <div class="col-md-12">
+                    <field name="chosen_state" invisible="1"/>
+<!--                    <field name="qc_form_id" widget="qclist"/>-->
+                    <field name="question_ids" widget="qccheck"/>
+<!--                     attrs="{'invisible': [('chosen_state', '=', False)]}"-->
+                </div>
+                <footer>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="sh_mr_quality_check_wizard_action" model="ir.actions.act_window">
+        <field name="name">Quality Checks Popup</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mes.qualitycheckpopup</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sh_mr_quality_check_wizard_form_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

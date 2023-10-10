@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="mrp_masterproduction_form_views_custom" model="ir.ui.view">
+        <field name="name">mrp.masterproduction.form.view.custom</field>
+        <field name="model">mrp.masterproduction</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="autonsi_mmo.view_master_manufacturing_order"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/notebook[@name='manufacturing_order_notebook']/page[@name='manufacturing_order']"
+                   position="after">
+                <page string="Quality Checks" attrs="{'invisible': [('id', '=', False)]}">
+                    <field name="quality_check_ids">
+                        <tree decoration-danger="state == 'fail'" decoration-success="state == 'pass'" editable="top">
+                            <field name="sh_mrp" string = "Reference" readonly = "1"/>
+                            <field name="product_id" readonly="1"/>
+                            <field name="product_qty" readonly = "1"/>
+                            <field name="sh_date" invisible="1"/>
+                            <field name="operation_name"/>
+                            <field name="sh_control_point" invisible="1"/>
+                            <field name="control_point_id" invisible="1"/>
+                            <field name="qc_sop_type" domain="[('qc_sop_category','=','pqc')]" />
+                            <field name="qc_type" invisible="1"/>
+                            <field name="mes_qc_form_id" domain="[('qc_sop_type','=',qc_sop_type)]"  string="QC SOP"/>
+                            <field name="state" string="PQC Result"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
