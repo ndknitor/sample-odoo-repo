@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_master_manufacturing_order" model="ir.actions.act_window">
+        <field name="name">Master Manufactoring Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.masterproduction</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first master manufacturing order!
+            </p>
+        </field>
+    </record>
+    <record id="action_master_manufacturing_filter_order" model="ir.actions.act_window">
+        <field name="name">Master Manufactoring Orders Filter</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mrp.production</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <!--        <field name="context">{'search_default_responsible_id': 1}</field>-->
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first manufacturing order!
+            </p>
+        </field>
+    </record>
+    <record id="view_master_manufacturing_order_tree" model="ir.ui.view">
+        <field name="name">mrp.masterproduction.tree</field>
+        <field name="model">mrp.masterproduction</field>
+        <field name="arch" type="xml">
+            <tree sample="1" default_order="name desc" >
+                <field name="name"/>
+                <field name="date_planned_start" readonly="1" optional="show" widget="remaining_days"/>
+                <field name="product_id"/>
+                <field name="quantity"/>
+                <field name="company_id" invisible="1"/>
+                <field name="state"
+                       decoration-success="state in ('done', 'to_close')"
+                       decoration-warning="state == 'progress'"
+                       decoration-info="state in ('confirmed', 'draft')"
+                       optional="show" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_master_manufacturing_order" model="ir.ui.view">
+        <field name="name">mrp.masterproduction.form</field>
+        <field name="model">mrp.masterproduction</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_confirm" attrs="{'invisible': [('state', '!=', 'draft')]}" string="Confirm"
+                            type="object" class="oe_highlight" data-hotkey="v"/>
+                    <button name="action_manufacturing_order" string="Manufacturing Order" type="object"
+                            class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,progress,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_id" context="{'default_detailed_type': 'product'}"/>
+                            <field name="quantity"/>
+                            <field name="mmo_product_tmpl_id" invisible="1"/>
+                            <field name="mmo_bom_id" context="{'default_product_tmpl_id': product_id}"/>
+                        </group>
+                        <group>
+                            <field name="date_planned_start"/>
+                            <field name="sale_order_id"/>
+                            <field name="company_id" readonly="1" groups="base.group_multi_company" optional="show"/>
+                        </group>
+                    </group>
+                    <notebook name="manufacturing_order_notebook">
+                        <page string="Manufacturing Order" name="manufacturing_order">
+                            <field name="mo_line_ids">
+                                <tree editable="bottom" default_order='level' name="mo_line_ids_tree">
+                                    <field name="mo_name"/>
+                                    <field name="product_id"/>
+                                    <field name="product_qty"/>
+                                    <field name="picking_type_id" invisible="1"/>
+                                    <field name="components_availability" string="Material Availability" invisible="1"/>
+                                    <field name="operation_name"/>
+                                    <field name="level"/>
+                                    <field name="workcenter_id"/>
+                                    <field name="check_pqc"/>
+                                    <field name="pqc_result" invisible="1"/>
+                                    <field name="state"/>
+                                    <field name="need_qc" invisible="1"/>
+                                    <field name="bom_id" invisible="1"/>
+                                    <field name="consumption" invisible="1"/>
+                                    <field name="date_planned_start" invisible="1"/>
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="location_src_id" invisible="1"/>
+                                    <field name="location_dest_id" invisible="1"/>
+                                    <field name="product_uom_id" invisible="1"/>
+                                    <field name="product_uom_category_id" invisible="1"/>
+                                    <field name="move_raw_ids" invisible="1">
+                                        <!--                                        <tree invisible="1">-->
+                                        <!--                                            <field name="name"  invisible="1"/>-->
+                                        <!--                                            <field name="reference"  invisible="1"/>-->
+                                        <!--                                            <field name="company_id"  invisible="1"/>-->
+                                        <!--                                            <field name="date" invisible="1"/>-->
+                                        <!--                                            <field name="location_id"  invisible="1"/>-->
+                                        <!--                                            <field name="location_dest_id" invisible="1" />-->
+                                        <!--                                            <field name="product_id"  invisible="1"/>-->
+                                        <!--                                            <field name="product_uom"  invisible="1"/>-->
+                                        <!--                                            <field name="product_uom_qty" invisible="1" />-->
+                                        <!--                                            <field name="procure_method" invisible="1" />-->
+                                        <!--                                            <field name="warehouse_id" invisible="1"/>-->
+                                        <!--                                        </tree>-->
+                                    </field>
+                                    <field name="move_finished_ids" invisible="1">
+                                        <!--                                        <tree invisible="1">-->
+                                        <!--                                            <field name="name"  invisible="1"/>-->
+                                        <!--                                            <field name="reference"  invisible="1"/>-->
+                                        <!--                                            <field name="company_id"  invisible="1"/>-->
+                                        <!--                                            <field name="date" invisible="1"/>-->
+                                        <!--                                            <field name="location_id"  invisible="1"/>-->
+                                        <!--                                            <field name="location_dest_id" invisible="1" />-->
+                                        <!--                                            <field name="product_id"  invisible="1"/>-->
+                                        <!--                                            <field name="product_uom"  invisible="1"/>-->
+                                        <!--                                            <field name="product_uom_qty" invisible="1" />-->
+                                        <!--                                            <field name="procure_method" invisible="1" />-->
+                                        <!--                                            <field name="warehouse_id" invisible="1"/>-->
+                                        <!--                                        </tree>-->
+                                    </field>
+                                    <field name="workorder_ids" invisible="1">
+                                        <tree>
+                                            <field name="name" invisible="1"/>
+                                            <field name="production_id" invisible="1"/>
+                                            <field name="workcenter_id" invisible="1"/>
+                                            <field name="product_uom_id" invisible="1"/>
+                                            <field name="product_uom_id" invisible="1"/>
+                                            <field name="operation_id" invisible="1"/>
+                                            <field name="state" invisible="1"/>
+                                            <field name="duration_expected" invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <menuitem id="mrp.menu_mrp_mastermanufacturingorder"
+              name="Master Manufactoring Orders"
+              parent="mrp.menu_mrp_manufacturing"
+              action="action_master_manufacturing_order"
+              sequence="0"/>
+    <record id="seq_master_manufacturing_order" model="ir.sequence">
+        <field name="name">Master Manufacturing Order</field>
+        <field name="code">mrp.masterproduction</field>
+        <field name="prefix">WH/MMO/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+    <record id="mrp_production_form_views_custom_operationname" model="ir.ui.view">
+        <field name="name">mrp.production.form.view.custom.operationname</field>
+        <field name="model">mrp.production</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/group/group[@name='group_extra_info']/field[@name='company_id']"
+                   position="after">
+                <field name="operation_name" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="mrp_production_tree_views_custom" model="ir.ui.view">
+        <field name="name">mrp.production.tree.view.custom</field>
+        <field name="model">mrp.production</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="mrp.mrp_production_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="/tree/field[@name='product_id']"
+                   position="after">
+                <field name="operation_name" readonly="1"/>
+            </xpath>
+            <xpath expr="/tree/field[@name='name']"
+                   position="before">
+                <field name="mmo_id" readonly="1"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <menuitem
+            id="mrp.menu_mrp_routing_action"
+            name="Operations"
+            action="mrp.mrp_routing_action"
+            parent="mrp.menu_mrp_manufacturing" sequence="6"
+    />
+</odoo>
