@@ -1,0 +1,165 @@
+<odoo>
+    <data>
+
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <form>
+                    <group name="base">
+                        <field name="service_file" position="after">
+                            <label for="service_file" string="Service file"/>
+                        </field>
+                        <field name="folder_id" password="True" position="after">
+                            <label for="folder_id" string="Folder Id"/>
+                        </field>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_kn_auto_backup_form" model="ir.ui.view">
+            <field name="name">kn_auto_backup.tree</field>
+            <field name="model">kn.auto.backup</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+
+                                <field name="dbhost"/>
+                                <field name="dbport"/>
+                                <field name="dbname"/>
+                                <field name="dbuser"/>
+                                <field name="dbpassword" password="True" />
+                                <field name="place"/>
+                                <field name="last_backup"/>
+                            </group>
+                            <group>
+                                <field name="company"/>
+                                <field name="date_of_use"/>
+                                <field name="contract_amount"/>
+                                <field name="amount"/>
+                                <field name="customer_manager"/>
+                                <field name="term"/>
+                                <field name="autorestore"/>
+                                <field name="status"/>
+                            </group>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record id="view_kn_auto_backup_tree" model="ir.ui.view">
+            <field name="name">kn_auto_backup.tree</field>
+            <field name="model">kn.auto.backup</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="company"/>
+                    <field name="date_of_use"/>
+                    <field name="dbhost"/>
+                    <field name="dbname"/>
+                    <field name="dbport"/>
+                    <field name="dbuser"/>
+                    <field name="place"/>
+                    <field name="last_backup"/>
+                    <field name="contract_amount"/>
+                    <field name="amount"/>
+                    <field name="customer_manager"/>
+
+                    <field name="term"/>
+
+                    <field name="autorestore"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_kn_auto_backup_tree" model="ir.actions.act_window">
+            <field name="name">Backup Information</field>
+            <field name="res_model">kn.auto.backup</field>
+        </record>
+
+        <record id="view_kn_auto_backup_contract_history" model="ir.ui.view">
+            <field name="name">kn_auto_backup.tree</field>
+            <field name="model">kn.auto.backup_contract_history</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="sale_order"/>
+                    <field name="product"/>
+                    <field name="description"/>
+                    <field name="amount"/>
+                    <field name="date"/>
+                    <field name="recevied_amount"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_kn_auto_backup_contract_history" model="ir.actions.act_window">
+            <field name="name">Contract History</field>
+            <field name="res_model">kn.auto.backup_contract_history</field>
+        </record>
+
+        <record id="view_kn_auto_backup_backup_history" model="ir.ui.view">
+            <field name="name">kn_auto_backup.tree</field>
+            <field name="model">kn.auto.backup_backup_history</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="db_name"/>
+                    <field name="device"/>
+                    <field name="file_name"/>
+                    <field name="date"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_kn_auto_backup_backup_history" model="ir.actions.act_window">
+            <field name="name">Backup status History</field>
+            <field name="res_model">kn.auto.backup_backup_history</field>
+        </record>
+
+        <record id="view_kn_auto_backup_server_history" model="ir.ui.view">
+            <field name="name">kn_auto_backup.tree</field>
+            <field name="model">kn.auto.backup_server_history</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_kn_auto_backup_server_history" model="ir.actions.act_window">
+            <field name="name">Server status History</field>
+            <field name="res_model">kn.auto.backup_server_history</field>
+        </record>
+
+        <record id="view_kn_auto_backup_backup_user" model="ir.ui.view">
+            <field name="name">kn_auto_backup.tree</field>
+            <field name="model">kn.auto.backup_user</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_kn_auto_backup_backup_user" model="ir.actions.act_window">
+            <field name="name">User</field>
+            <field name="res_model">kn.auto.backup_user</field>
+        </record>
+
+        <menuitem id="menu_kn_auto_backup" name="Server backup" action="action_kn_auto_backup_tree"/>
+
+        <menuitem id="menu_kn_auto_backup_contract_history" name="Contract history" parent="menu_kn_auto_backup" action="action_kn_auto_backup_contract_history"/>
+
+        <menuitem id="menu_kn_auto_backup_history" name="Backup history" parent="menu_kn_auto_backup" action="action_kn_auto_backup_backup_history"/>
+
+        <menuitem id="menu_kn_auto_server_history" name="Server's status history" parent="menu_kn_auto_backup" action="action_kn_auto_backup_server_history"/>
+
+        <menuitem id="menu_kn_auto_backup_user" name="User" parent="menu_kn_auto_backup" action="action_kn_auto_backup_backup_user"/>
+
+    </data>
+</odoo>

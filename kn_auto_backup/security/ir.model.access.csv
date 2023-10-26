@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+kn_auto_backup,kn_auto_backup,model_kn_auto_backup,base.group_user,1,1,1,1
+kn_auto_backup_server_history,kn_auto_backup_server_history,model_kn_auto_backup_server_history,base.group_user,1,1,1,1
+kn_auto_backup_backup_history,kn_auto_backup_backup_history,model_kn_auto_backup_backup_history,base.group_user,1,1,1,1
+kn_auto_backup_settings,kn_auto_backup_settings,model_kn_auto_backup_settings,base.group_user,1,1,1,1
+kn_auto_backup_user,kn_auto_backup_user,model_kn_auto_backup_user,base.group_user,1,1,1,1
+kn_auto_backup_contract_history,kn_auto_backup_contract_history,model_kn_auto_backup_contract_history,base.group_user,1,1,1,1
+kn_auto_backup_server_history,kn_auto_backup_server_history,model_kn_auto_backup_server_history,base.group_user,1,1,1,1
